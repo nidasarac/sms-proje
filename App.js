@@ -3,6 +3,9 @@ import { StyleSheet, Text, TextInput, Button, View, Fragment, SafeAreaView, Scro
 import { useEffect, useState } from 'react';
 import * as Device from 'expo-device';
 import * as SMS from 'expo-sms';
+import * as Print from 'expo-print';
+import * as FileSystem from 'expo-file-system';
+
 
 
 
@@ -45,8 +48,9 @@ const App = () => {
   }, []);
 
   const sendSms = async () => {
+    console.log("Sending sms");
     const { uri } = await Print.printToFileAsync({
-      
+      html: `<h1>${responseMessage}</h1>`,
     });
 
     console.log(uri);
